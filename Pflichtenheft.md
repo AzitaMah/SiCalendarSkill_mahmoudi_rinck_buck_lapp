@@ -32,7 +32,7 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 - MyCroft reagiert auf verschiedene Abwandlungen der Spracheingabe für bessere Interaktion
 - Datenschutz -> man kann nicht über Spracheingabe auf Kalender von anderen Personen zugreifen
 - Die Bedienung des Programms soll simple und verständlich gestaltet werden.
-- Das Programm soll do entwickelt werden, dass es änderbar und somit wartbar ist. 
+- Das Programm soll so entwickelt werden, dass es änderbar und somit wartbar ist. 
 - Netzwerkanschluss
 
 
@@ -50,7 +50,7 @@ November:
 - IP-Adresse ohne das Raspberry Pi am Computer Bildschirm anzuschließen herausfinden. (check)
 - Am Ende des Monats soll eine Verbindung über SSH mit dem raspberryPi aufgebaut werden können. (check)
 - MyCroft nutzen über SSH Verbindung mit Laptop. 
-- Ein Template für einen eigenen Skills in MyCroft erstellen und das Raspberry Pi mit git verbinden.
+- Ein Template für einen eigenen Skills in MyCroft erstellen und das Raspberry Pi mit GitHub verbinden.
 
 Dezember
 - mit dem Programmieren eines eigenen Kalender-Skill anfangen.
