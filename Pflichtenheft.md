@@ -28,41 +28,33 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 
 ### Beispielhafte Anfragen:
 **Nächster Termin:**
-- U: Was ist mein nächster Termin? 
-- M: Dein nächster Termin ist am "dd.mm.yyyy" und lautet "xy".
+- U: What's my next appointment? 
+- M: Your next appointment is on the "dd.mm.yyyy", starts at "hh:mm" and is called "name".
 
 **Termine an bestimmtem Tag**
-- U: Welche Termine habe ich am "dd.mm.yyyy"? 
-- M: An diesem Tag hast du keine Termine. 
-- M: Dein Termin am "dd.mm." lautet "xy"
+- U: What are my appointments on the "dd.mm.yyyy"? 
+- M: You don't have any appointments on that day. 
+- M: Your appointment on the "dd.mm.yyyy" starts at "hh:mm" and is called "name"
 
 **Neuen Termin anlegen**
-- U: Ich möchte am "dd.mm.yyyy" einen neuen Termin anlegen.
-- M: Okay. Wie lautet dein Termin? 
-- U: "Termin Name"
-- M: Ist es ein Ganztagestermin?
-- U: Nein.
-- M: Wann beginnt der Termin?
-- U: "hh:mm"
-- M: Wann endet der Termin?
-- U: "hh:mm"
-- M: Ich habe einen Termin am "dd.mm." hinzugefügt von "Beginn" bis "Ende" mit dem Namen "Termin Name".
+- U: Create an appointment "name" on the "dd.mm.yyyy" starting at "hh:mm" and ending at "hh:mm".
+- M: I created a new appointment called "name" on the "dd.mm.yyyy". It starts at "hh:mm" and ends at "hh:mm".
 
 **Bestehenden Termin umbenennen**
-- U: Ich möchte am "dd.mm." den Termin umbennenen.
-- M: Okay. Wie soll der Termin heißen?
+- U: I want to rename the appointment "old name" on the "dd.mm.yyyy" to "new name".
+- M: The appointment has been changed to "new name".
 
 **Termin löschen**
-- U: Termin am "dd.mm." löschen.
-- M: Soll der Termin am "dd.mm." sicher gelöscht werden?
-- U: Ja
-- M: Der Termin wurde gelöscht.
+- U: Delete the appointment "name" on the "dd.mm.yyyy".
+- M: Are you sure you want to delete "name" on the "dd.mm.yyyy"?
+- U: Yes
+- M: The appointment "name" has been deleted.
 
 **Fehlerhafte Anfrage**
-- U: "fehlerhafte Anfrage"
-- M: Das habe ich nicht verstanden. Kannst du es bitte wiederholen?
+- U: "wrong request"
+- M: I didn't understand that. Please repeat your request.
 User versucht nicht bestehenden Termin zu löschen:
-- M: es tut mir leid, aber am "dd.mm" besteht zur Zeit kein Termin, der gelöscht werden kann.
+- M: There is no appointment on the "dd.mm.yyyy" called "name" to delete.
 
 Anmerkungen zu den Anfragen:
 - Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
@@ -84,9 +76,10 @@ Anmerkungen zu den Anfragen:
 
 ## Ausgeschlossene Funktionalität ("future work")
 
-Aus Sicherheitsgründen sollte der Besitzer des Kalenders nur mit seiner eigenen Stimme Veränderungen im Kalender vornehmen dürfen und Termine abfragen dürfen. 
-Dadurch soll vermieden werden, dass fremde Person durch rein sprachliche Kommandos Zugriff auf den Kalender haben. 
-Der Nutzer kann somit zum einen über die Webseite von NextCloud seine Termine steuern, aber auch über die Stimme, welche vorher authentifiziert werden muss.
+Aus Sicherheitsgründen sollte der Besitzer des Kalenders nur mit seiner eigenen Stimme Veränderungen im Kalender vornehmen dürfen und Termine abfragen dürfen. Dadurch soll vermieden werden, dass fremde Person durch rein sprachliche Kommandos Zugriff auf den Kalender haben. 
+Der Nutzer kann somit zum einen über die Webseite von NextCloud seine Termine steuern, aber auch über die Stimme, welche vorher authentifiziert werden muss. 
+Zudem ist die Erstellung eines Termins nur für die Zeitzone gedacht, in der sich der Nutzer aktuell befindet. Falls ein Nutzer einen Termin erstellen möchte, der nicht in seiner Zeitzone stattfindet, wird die Zeit nach der aktuellen Zeitzone angegeben.
+
 
 
 ## Zeit- und Personalplanung
