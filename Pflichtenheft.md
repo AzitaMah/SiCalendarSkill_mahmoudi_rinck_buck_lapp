@@ -32,7 +32,7 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 - M: Dein nächster Termin ist am "dd.mm.yyyy" und lautet "xy".
 
 **Termine an bestimmtem Tag**
-- U: Welche Termine habe ich am "dd.mm."? 
+- U: Welche Termine habe ich am "dd.mm.yyyy"? 
 - M: An diesem Tag hast du keine Termine. 
 - M: Dein Termin am "dd.mm." lautet "xy"
 
@@ -65,8 +65,8 @@ User versucht nicht bestehenden Termin zu löschen:
 - M: es tut mir leid, aber am "dd.mm" besteht zur Zeit kein Termin, der gelöscht werden kann.
 
 Anmerkungen zu den Anfragen:
-- Wenn kein Jahr genannt wird, geht man vom aktuellen Jahr aus.
-- Termine aus der Vergangenheit können gelöscht werden. Es können aber keine Termine in der Vergangenheit angelegt werden oder umbenannt werden. 
+- Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
+- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden. 
 - Ganztagestermine werden so behandelt, dass die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt ist. Wenn die nächsten Termine also am nächsten Tag sind und einmal ein Ganztagestermin und ein Termin um 10:00 stattfinden, wird der Ganztagestermin als nächster ausgegeben.
 -  Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan anlegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
 
@@ -117,11 +117,10 @@ Abgabe 24.01.23
 
 ### Personalplanung
  
-Für die genaue Aufteilung der Rollen müssen vorerst alle Punkte im November abgeschlossen sein.
-Zu Beginn arbeiten alle Mitglieder zusammen, damit jeder weiß wie man den Raspberry-Pi benutzt und eine spätere Aufgabenverteilung möglich ist. 
+Zu Beginn haben wir  alle zusammen gearbeitet, damit jeder wusste wie man den Raspberry-Pi benutzt. Jeder hat einen eigenen Skill implemetiert. Zum Schluss haben wir gemeinsam die Google Coding Styles umgesetzt.
 
-(spätere) Rollenverteilung: 
-- Anna:
-- Alex:
-- Azita:
-- Julia:
+Rollenverteilung: 
+- Anna: Create new appointment skill
+- Alex: Next appoitnment skill & appointment on a specific date skill
+- Azita: Delete appointment skill
+- Julia: Rename appointment skill
