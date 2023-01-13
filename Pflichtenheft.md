@@ -27,40 +27,51 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 - Bei fehlerhaften Anfragen soll dem Nutzer ein entsprechendes Feedback gegeben werden. 
 
 ### Beispielhafte Anfragen:
+
+
+**How to enter a date**
+{day} {month} of {year}: first March of two thousand twenty three
+
+**How to enter a time**
+{time}: teen thirty
+{time} o'clock: teen
+
 **Nächster Termin:**
 - U: What's my next appointment? 
-- M: Your next appointment is on the "dd.mm.yyyy", starts at "hh:mm" and is called "name".
+- M: Your next appointment is {name} and will take place on the {day} {month} of {year} and starts at {time}
 
 **Termine an bestimmtem Tag**
-- U: What are my appointments on the "dd.mm.yyyy"? 
-- M: You don't have any appointments on that day. 
-- M: Your appointment on the "dd.mm.yyyy" starts at "hh:mm" and is called "name"
+- U: What are my appointments on the {day} {month} of {year} ? 
+- M: You don't have any appointments on this day. 
+- M: You have the following appointments on this date
+     {name} starting at {start_time} and ending at {end_time}
+     {name} all day long
 
 **Neuen Termin anlegen**
-- U: Create an appointment "name" on the "dd.mm.yyyy" starting at "hh:mm" and ending at "hh:mm".
-- M: I created a new appointment called "name" on the "dd.mm.yyyy". It starts at "hh:mm" and ends at "hh:mm".
+- U: Create an appointment on the {day} {month} of {year} named {name} starting at {start_time} and ending at {end_time}
+- M: I created a new appointment called "name" on the {day} {month} of {year} starting at {start_time}
 
 **Bestehenden Termin umbenennen**
-- U: I want to rename the appointment "old name" on the "dd.mm.yyyy" to "new name".
-- M: The appointment has been changed to "new name".
+- U: rename my meeting on the {day} {month} of {year} called {old_name} to {new_name}
+- M: I changed the name of your appointment on the {day} {month} of {year} called {old_name} to {new_name}
 
 **Termin löschen**
-- U: Delete the appointment "name" on the "dd.mm.yyyy".
-- M: Are you sure you want to delete "name" on the "dd.mm.yyyy"?
+- U: delete my meeting on the {day} {month} of {year} named {name}
+- M: Do you really want to delete the appointment {name} on the {day} {month} of {year} ? To confirm type yes or no.
 - U: Yes
-- M: The appointment "name" has been deleted.
+- M: I deleted your appointment on the {day} {month} of {year} called {name}
 
 **Fehlerhafte Anfrage**
 - U: "wrong request"
 - M: I didn't understand that. Please repeat your request.
 User versucht nicht bestehenden Termin zu löschen:
-- M: There is no appointment on the "dd.mm.yyyy" called "name" to delete.
+- M: I can't delete the appointment {name} on the {day} {month} of {year}
 
 Anmerkungen zu den Anfragen:
 - Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
-- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden. 
+- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden, da wir keine entsprechenden Begrenzungen miteingebunden haben. 
 - Ganztagestermine werden so behandelt, dass die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt ist. Wenn die nächsten Termine also am nächsten Tag sind und einmal ein Ganztagestermin und ein Termin um 10:00 stattfinden, wird der Ganztagestermin als nächster ausgegeben.
--  Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan anlegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
+- Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan angelegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
 
 
 
@@ -110,10 +121,10 @@ Abgabe 24.01.23
 
 ### Personalplanung
  
-Zu Beginn haben wir  alle zusammen gearbeitet, damit jeder wusste wie man den Raspberry-Pi benutzt. Jeder hat einen eigenen Skill implemetiert. Zum Schluss haben wir gemeinsam die Google Coding Styles umgesetzt.
+Zu Beginn haben wir alle zusammen gearbeitet, damit jeder wusste wie man den Raspberry-Pi benutzt. Jeder hat einen eigenen Skill implemetiert. Zum Schluss haben wir gemeinsam die Google Coding Styles umgesetzt.
 
 Rollenverteilung: 
 - Anna: Create new appointment skill
-- Alex: Next appoitnment skill & appointment on a specific date skill
+- Alex: Next appointment skill & appointment on a specific date skill
 - Azita: Delete appointment skill
 - Julia: Rename appointment skill
