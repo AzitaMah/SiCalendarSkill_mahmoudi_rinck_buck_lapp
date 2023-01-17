@@ -7,8 +7,7 @@ Aufgabe ist es, mittels des Sprachassistenten Mycroft einen Kalender Skill umzus
 Der Skill besteht darin, einen neuen Termin anzulegen, alle Termine eines Tages, sowie den nächsten Termin auszugeben. Zudem einen Termin umzubenennen und einen Termin zu löschen. Für das Löschen des Termins wird eine Sicherheitsbestätigung benötigt, bevor der Kalendereintrag gelöscht werden kann. Dabei müssen gewisse Anforderungen beachtet werden. Beispielsweise die richtige Umwandlung eines Datums, wie 01.02.2022 in first of february twothousendtwentytwo, und umgekehrt.
 Des Weiteren wurde ein Pflichten- und Lastenheft angelegt, welches die zu erfüllenden Anforderungen an dieses Projekt enthält. Ebenso enthalten sind ausgeschlossene Fuktionalitäten.
 Außerdem müssen in dem Programm die Google Coding Styles zu mindestestens 50% erfüllt werden.
-
--clean code
+Zusätzlich haben wir versucht unseren Code recht übersichtlich zu halten, indem wir Code, welcher mehrmals genutzt wird, in einzelne Methoden auszulagern. Die Methoden und Variablen wurden mit eindeutigen Namen benannt. 
 
 ## Vorgehensweise
 
@@ -155,9 +154,9 @@ def delete_appointment_by_name_and_time(self, name, day, month, year):
 
 ### Dialog Dateien
 
-Die Dialog Dateien befinden sich in dem Ordner `/locale/en-us`. Diese Dateien werden genutzt um den Nutzer entsprechende Antworten auf eine Eingabe zu geben. 
-Beispiel Inhalt einer Dialog Datei (get_next_appointment):
-Your next appointment is {name} {date}
+Die Dialog Dateien befinden sich in dem Ordner `/locale/en-us`. Diese Dateien werden genutzt um den Nutzer entsprechende Antworten auf eine Eingabe zu geben. <br>
+Beispiel Inhalt einer Dialog Datei (get_next_appointment): <br>
+Your next appointment is {name} {date} <br>
 Um der Ausgabe entsprechenden {name} {date} mitzuteilen, wird die unten gezeigte Funktion genutzt. 
 ```python
 self.speak_dialog('get_next_appointment',
@@ -168,14 +167,14 @@ self.speak_dialog('get_next_appointment',
 
 ### Intent Dateien
 
-Die Intent Dateien befinden sich in dem Ordner `/locale/en-us`. Die gespeicherten Sätze in den Intent Dateien, sind die Sätze mit denen ein Nutzer das System nutzen kann. {name} kann über message.data.get('name') in der __init__.py genutzt werden.
-Beispiel Inhalt einer Intent Datei: 
-delete my appointment {day} {month} of {year} named {name}
+Die Intent Dateien befinden sich in dem Ordner `/locale/en-us`. Die gespeicherten Sätze in den Intent Dateien, sind die Sätze mit denen ein Nutzer das System nutzen kann. {name} kann über message.data.get('name') in der __init__.py genutzt werden. <br>
+Beispiel Inhalt einer Intent Datei: <br>
+delete my appointment {day} {month} of {year} named {name} <br>
 
 
 ### __init__.py
 
-In der __init__.py Datei befinden sich nicht nur die oben besprochenen Methoden, sondern auch die entsprechenden Hanlder Methoden. Die Handler Methoden verknüpfen die Dialog Dateien, Intent Dateien und die entsprechenden Methoden miteinander. 
+In der __init__.py Datei befinden sich nicht nur die oben besprochenen Methoden, sondern auch die entsprechenden Hanlder Methoden. Die Handler Methoden verknüpfen die Dialog Dateien, Intent Dateien und die entsprechenden Methoden miteinander.  <br>
 
 Zum Beispiel die Handle Methode von get_next_appointment(). 
 Mit @intent_file_handler wird die entsprechende Intent Datei ausgewählt. In der Methode wird die get_next_appointment() Methode ausgegeben und anhand des return Werts der Methode die passende Dialog Datei ausgewählt. Wenn der nächste Termin den ganzen Tag geht wird der Inhalt der get_next_appointment_all_day.dialog Datei ausgegeben. 
