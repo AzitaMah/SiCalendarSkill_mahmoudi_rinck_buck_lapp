@@ -198,6 +198,34 @@ def handle_get_next_appointment(self, message):
                                'name': name})
 ```
 
+### Zeitkonvertierung
+
+Um die eingegebenen Daten und Zeiten in ein Datum zu konvertieren, implementierten wir `convert_word_date_to_number_date()` und `convert_word_time_to_number_date()`. 
+
+<br> <br>
+`convert_word_date_to_number_date()` wandelt ein Datum von first March of two thousand twenty three zu 1.3.2023 um 
+```python
+def convert_word_date_to_number_date(day, month, year):
+    day_number = day_to_num(day.lower())
+    month_number = month_to_num(month.lower())
+    year_number = w2n.word_to_num(year)
+    return year_number, month_number, day_number
+```
+
+`convert_word_time_to_number_date()` wandelt fifteen thirty zu 15:30 oder ten zu 10 um
+
+```python
+def convert_word_time_to_number_date(given_time):
+    if given_time.find(" ") != -1:
+        hour, minutes = given_time.split(" ")
+        minutes_number = w2n.word_to_num(minutes)
+        hour_number = w2n.word_to_num(hour)
+    else:
+        minutes_number = 0
+        hour_number = w2n.word_to_num(given_time)
+    return hour_number, minutes_number
+```
+
 
 
 ## Eingesetzte Google Coding Styles
