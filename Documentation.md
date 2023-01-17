@@ -18,5 +18,15 @@ Im Anschluss haben wir den Skill, sowie das GitHub Repository angelegt. Nachdem 
 Als alle Befehle fehlerfrei funktionierten, haben wir den Code überarbeitet, sodass dieser den Google Coding Styles entspricht.
 
 ## Mycroft Skill anlegen
+- rasperry Pi setup und Verbindungsaufbau
+-> dann Mycroft Skill anlegen
+
+Zuerst muss der Befehl ```pip install msk``` und danach ```msk create``` eingegeben werden. Falls man GitHub als Version Control System nutzen möchte, muss dann der eigene GitHub Benutzername eingegeben werden. Zudem muss der gewünschte Name für den Skill gewählt werden.<br>
+Optional können bereits beispielhafte Befehle eingegeben werden, auf welche Mycroft reagieren soll. Ebenso kann ein personalisiertes Icon für den Skill erstellt werden.<br>
+Wenn das gemacht ist, müssen die Kategorien ausgewählt werden, in die der Skill fällt. Zudem muss eine Lizenz gewählt werden, um fortfahren zu können.<br>
+Daraufhin kann man automatisch ein GitHub Repository anlegen lassen. Hierfür muss man in dem erstellten Repository einen Access Token generieren lassen. Dieser muss in der Kommandozeile eingegeben werden.(repo token)
+-> GitHub und Skill erstellt
+Um eine SSH Verbindung herzustellen wird die IP-Adresse des Rasperry Pi benötigt. Diese lässt sich herausfinden über den Befehl ```ifconfig``` herausfinden.
+
 
 ## Eingesetzte Google Coding Styles
