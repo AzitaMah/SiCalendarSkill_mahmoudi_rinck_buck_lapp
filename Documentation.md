@@ -3,7 +3,7 @@ Gruppe: SI-WS2022_Buck_Rinck_Mahmoudi_Lapp
 # Documentation 
 
 ## Aufgabenstellung
-Aufgabe ist es, mittels des Sprachassistenten Mycroft einen Kalender Skill umzusetzten, mit welchem man dazu in der Lage ist, Kalendereinträge zu erstellen ändern und löschen. 
+Aufgabe ist es, mittels des Sprachassistenten Mycroft einen Kalender Skill umzusetzten, mit welchem man dazu in der Lage ist, Kalendereinträge zu erstellen, zu ändern und zu löschen. 
 Der Skill besteht darin, einen neuen Termin anzulegen, alle Termine eines Tages, sowie den nächsten Termin auszugeben. Zudem einen Termin umzubenennen und einen Termin zu löschen. Für das Löschen des Termins wird eine Sicherheitsbestätigung benötigt, bevor der Kalendereintrag gelöscht werden kann. Dabei müssen gewisse Anforderungen beachtet werden. Beispielsweise die richtige Umwandlung eines Datums, wie 01.02.2022 in first of february twothousendtwentytwo, und umgekehrt.
 Des Weiteren wurde ein Pflichten- und Lastenheft angelegt, welches die zu erfüllenden Anforderungen an dieses Projekt enthält. Ebenso enthalten sind ausgeschlossene Fuktionalitäten.
 Außerdem müssen in dem Programm die Google Coding Styles zu mindestestens 50% erfüllt werden.
@@ -12,7 +12,7 @@ Zusätzlich haben wir versucht unseren Code recht übersichtlich zu halten, inde
 ## Vorgehensweise
 
 Zu Beginn ist das Pflichtenheft angelegt worden, um das Vorgehen und die zu erfüllenden Aufgaben zu strukturieren.
-Es wurden genauen Befehle, welche durch den Skill möglich sind definiert, ebenso wie funktionale und nicht funktionale Anforderungen. Darüber hinaus haben ist darin festgelegt, welche Funktionalitäten ausgeschlossen sind. Des weiteren wurde eine genauere Implementierung der Zeitzonen implementiert. Das bedeutet, es werden nur Termine nach der Zeit angelegt und ausgegeben, die der aktuellen Zeitzone zugehörig sind. Zudem wird nicht unterschieden, mit welcher Stimme ein Befehl mitgegeben wird und ob die Person tatsächlicher Inhaber des Kalenders ist.
+Es wurden genauen Befehle, welche durch den Skill möglich sind definiert, ebenso wie funktionale und nicht funktionale Anforderungen. Darüber hinaus haben ist darin festgelegt, welche Funktionalitäten ausgeschlossen sind. Des weiteren wurde eine genauere Implementierung der Zeitzonen angelegt. Das bedeutet, es werden nur Termine nach der Zeit angelegt und ausgegeben, die der aktuellen Zeitzone zugehörig sind. Zudem wird nicht unterschieden, mit welcher Stimme ein Befehl mitgegeben wird und ob die Person tatsächlicher Inhaber des Kalenders ist.
 Im Anschluss wurde der Skill, sowie das GitHub Repository angelegt. Nachdem eine Verbindung zu dem CalendarSkill bestand, wurden die einzelnen Befehle implementieren. Bei aufkommenden Fehlern haben wir, mit Hilfe der skills.log nach der Ursache gesucht und diese behoben.
 Als alle Befehle fehlerfrei funktionierten, haben wir den Code überarbeitet, sodass dieser den Google Coding Styles entspricht.
 
@@ -23,13 +23,13 @@ Optional können bereits beispielhafte Befehle eingegeben werden, auf welche Myc
 Wenn das gemacht ist, müssen die Kategorien ausgewählt werden, in die der Skill fällt. Zudem muss eine Lizenz gewählt werden, um fortfahren zu können.<br>
 Daraufhin kann man automatisch ein GitHub Repository anlegen lassen. Hierfür muss man in dem erstellten Repository einen Access Token generieren lassen. Dieser muss in der Kommandozeile eingegeben werden.(repo token)
 ### GitHub und Skill erstellt
-Um eine SSH Verbindung herzustellen wird die IP-Adresse des Rasperry Pi benötigt. Diese lässt sich herausfinden über den Befehl ```ifconfig``` herausfinden.
+Um eine SSH Verbindung herzustellen wird die IP-Adresse des Rasberry Pi benötigt. Diese lässt sich herausfinden über den Befehl `ifconfig` herausfinden. Man kann nun in die Kommandozeile oder in Visual Studio Code `pi@ip-adresse` eingeben und die Verbindung zum Rasberry Pi wird nach der Eingabe des korrekten Passworts aufgebaut. 
 
-## Erläuterung des Konzepts der Implementierung des Kalenderskills
-
-Um die Verbindung zwischen unserem Skill und einem Kalender zu schaffen, haben wir die caldav library genutzt, welche unter folgenden Link zu finden ist https://github.com/python-caldav/caldav. 
+## Erläuterung des Konzepts der Implementierung des Kalenderskills 
 
 ### Erklärung Methoden
+
+Um die Verbindung zwischen unserem Skill und einem Kalender zu schaffen, haben wir die caldav library genutzt, welche unter folgenden Link zu finden ist https://github.com/python-caldav/caldav. Die hier erkläreten Methoden führen die mit Hilfe von caldav die nötigen Aktionen zur Veränderung und Abfrage von Kalendereinträgen durch. Die Methoden werden in den entsprechenden Handler Methoden aufgrufen und die nötigen Informationen aus der Spracheingabe werden mitgegeben. 
 
 Um die Verbindung mit einem Kalender herzustellen, haben wir die `connect()` Methode implementiert. Der return-Wert ermöglicht später den Zugriff auf den Kalender.
 
@@ -40,7 +40,7 @@ def connect(self):
         return principal
 ```
 
-Da wir für mehrere Methoden die verschiedenen Termine eines Kalenders nutzen, haben wir eine Methode implementiert, welche alle Termine eines Kalenders ausgibt.
+Da wir für mehrere Methoden die verschiedenen Termine eines Kalenders nutzen, haben wir eine Methode implementiert, welche alle Termine eines Kalenders zurückgibt.
 
 ```python
 def get_all_appointments(self):
@@ -50,7 +50,7 @@ def get_all_appointments(self):
         return all_events
 ```
 
-Um das nächste Event ausgeben zu können, müssen zunächst alle Events des Kalenders ermittelt werden, auch die aktuelle Zeit und das aktuelle Datum müssen gegeben sein. Nun kann man alle Events durchgehen und die relevanten Informationen (Name, Startzeit und Datum, Endzeit) für die Ausgabe in eine neue Liste speichern, aber nur von den Events welche in der Zukunft liegen. Zum Schluss sortieren wir die Liste, so dass das nächste Event an erster Stelle der Liste steht. Auch beachtet diese Methode, dass es womöglich keinen nächsten Termin gibt. 
+Um das nächste Event ausgeben zu können, müssen zunächst alle Events des Kalenders ermittelt werden, auch die aktuelle Zeit und das aktuelle Datum müssen gegeben sein. Nun kann man alle Events durchgehen und die relevanten Informationen (Name, Startzeit und Datum, Endzeit) für die Ausgabe in eine neue Liste speichern, aber nur von den Events welche in der Zukunft liegen. Zum Schluss sortieren wir die Liste, sodass das nächste Event an erster Stelle der Liste steht. Auch beachtet diese Methode, dass es womöglich keinen nächsten Termin gibt. 
 
 ```python
 def get_next_appointment(self):
@@ -79,7 +79,7 @@ def get_next_appointment(self):
 ```
 
 
-Um alle Events an einem gegebenen Datum auszugeben, werden nun wieder alle Events des Kalenders durchgegangen und die Events an dem gegebenen Datum in eine neue Liste hinzugefügt. 
+Um alle Events an einem gegebenen Datum auszugeben, werden nun wieder alle Events des Kalenders durchgegangen und die Events an dem gegebenen Datum in eine neue Liste hinzugefügt und zurückgegeben. So kann nicht nur ein Event an dem Tag ausgegeben werden, sondern eben alle an dem gegebenen Tag.
 
 ```python
 def get_all_appointments_on_a_specific_date(self, day, month, year):
@@ -102,8 +102,8 @@ def get_all_appointments_on_a_specific_date(self, day, month, year):
         return appointments
 ```
 
-Diese Methode kann einen bestehenden Termin, welcher mit Namen und Datum eingegeben werden muss umbennenen.
-Es werden wieder alle events nach einem Event durchsucht, welches den entsprechenden Namen und Uhrzeit hat. Wenn kein solches Event vorhanden ist, wird dies dem Nutzer entsprechend mitgeteilt
+Die unten gezeigte Methode kann einen bestehenden Termin, welcher mit Namen und Datum eingegeben werden muss umbennenen.
+Es werden wieder alle Events nach einem Event durchsucht, welches den entsprechenden Namen und Datum hat. Wenn kein solches Event vorhanden ist, wird dies dem Nutzer entsprechend mitgeteilt
 
 ```python
 def rename_appointment(self, old_name, new_name, day, month, year):
@@ -136,7 +136,7 @@ def create_new_appointment(self, name, day, month, year, start_time, end_time):
         calendar_si.save_event(dtstart=start_time_date, dtend=end_time_date, summary=name)
 ```
 
-Nach der Konfirmation, das der Nutzer den gegebenen Termin wirklich löschen möchte, wird dies durch die untern angegebende Methode durchgeführt. Auch hier muss der Nutzer einen Namen und ein Datum bei der Eingabe des Befehls angeben um den entsprechenden Termin löschen zu können. Da auch hier alle events durchgegagen werden und das Event mit dem gegebenen Namen und Datum rausgesucht wird. 
+Nach der Konfirmation, das der Nutzer den gegebenen Termin wirklich löschen möchte, wird dies durch die untern angegebende Methode durchgeführt. Auch hier muss der Nutzer einen Namen und ein Datum bei der Eingabe des Befehls angeben um den entsprechenden Termin löschen zu können. Auch hier werden alle Events durchgegagen und das Event mit dem gegebenen Namen und Datum rausgesucht. 
 
 ```python
 def delete_appointment_by_name_and_time(self, name, day, month, year):
@@ -154,10 +154,10 @@ def delete_appointment_by_name_and_time(self, name, day, month, year):
 
 ### Dialog Dateien
 
-Die Dialog Dateien befinden sich in dem Ordner `/locale/en-us`. Diese Dateien werden genutzt um den Nutzer entsprechende Antworten auf eine Eingabe zu geben. <br>
+Die Dialog Dateien befinden sich in dem Ordner `/locale/en-us`. Diese Dateien werden genutzt um den Nutzer entsprechende Antworten auf eine Spracheingabe zu geben. <br>
 Beispiel Inhalt einer Dialog Datei (`get_next_appointment`): <br>
 Your next appointment is {name} {date} <br>
-Um der Ausgabe entsprechenden {name} {date} mitzuteilen, wird die unten gezeigte Funktion genutzt. 
+Um der Ausgabe entsprechenden {name} {date} mitzuteilen, wird die unten gezeigte Funktion in der `__init__.py` genutzt. 
 ```python
 self.speak_dialog('get_next_appointment',
                         {'name': name,
@@ -167,7 +167,7 @@ self.speak_dialog('get_next_appointment',
 
 ### Intent Dateien
 
-Die Intent Dateien befinden sich in dem Ordner `/locale/en-us`. Die gespeicherten Sätze in den Intent Dateien, sind die Sätze mit denen ein Nutzer das System nutzen kann. {name} kann über message.data.get('name') in der `__init__.py` genutzt werden. <br>
+Die Intent Dateien befinden sich auch in dem Ordner `/locale/en-us`. Die gespeicherten Sätze in den Intent Dateien, sind die Sätze mit denen ein Nutzer das System nutzen kann. {name} kann über `message.data.get('name'` in der `__init__.py` genutzt werden. <br>
 Beispiel Inhalt einer Intent Datei: <br>
 delete my appointment {day} {month} of {year} named {name} <br>
 
