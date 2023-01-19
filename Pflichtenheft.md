@@ -69,7 +69,7 @@ User versucht nicht bestehenden Termin zu löschen:
 
 Anmerkungen zu den Anfragen:
 - Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
-- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden, da wir keine entsprechenden Begrenzungen miteingebunden haben. 
+- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden, da wir keine entsprechenden Begrenzungen miteingebunden haben. Zu beachten ist, das Termine nur zur vollen Stunde angelet werden können.   
 - Ganztagestermine werden so behandelt, dass die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt ist. Wenn die nächsten Termine also am nächsten Tag sind und einmal ein Ganztagestermin und ein Termin um 10:00 stattfinden, wird der Ganztagestermin als nächster ausgegeben.
 - Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan angelegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
 
@@ -90,7 +90,7 @@ Anmerkungen zu den Anfragen:
 Aus Sicherheitsgründen sollte der Besitzer des Kalenders nur mit seiner eigenen Stimme Veränderungen im Kalender vornehmen dürfen und Termine abfragen dürfen. Dadurch soll vermieden werden, dass fremde Person durch rein sprachliche Kommandos Zugriff auf den Kalender haben. 
 Der Nutzer kann somit zum einen über die Webseite von NextCloud seine Termine steuern, aber auch über die Stimme, welche vorher authentifiziert werden muss. 
 Zudem ist die Erstellung eines Termins nur für die Zeitzone gedacht, in der sich der Nutzer aktuell befindet. Falls ein Nutzer einen Termin erstellen möchte, der nicht in seiner Zeitzone stattfindet, wird die Zeit nach der aktuellen Zeitzone angegeben.
-
+Weiterhin soll die Möglichkeit bestehen Termine nicht nur zur vollen Stunde anzulegen. Uhrzeiten wie 10:30 sollen bei der Terminerstellung ebenfalls möglich sein. 
 
 
 ## Zeit- und Personalplanung
