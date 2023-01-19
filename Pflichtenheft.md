@@ -30,7 +30,7 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 
 
 **How to enter a date**
-{day} {month} of {year}: first March of two thousand twenty three
+{day} of {month} in {year}: first of March in two thousand twenty three
 
 **How to enter a time**
 {time}: teen thirty
