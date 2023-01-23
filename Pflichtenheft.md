@@ -68,6 +68,7 @@ User versucht nicht bestehenden Termin zu löschen:
 
 Anmerkungen zu den Anfragen:
 - Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
+- Beim erstellen eines Termines kann nur die Stunde angegeben und nicht dazu noch eine Minuten Anzahl. Also zusagen, dass ein Termin um 10 Uhr starten oder enden soll geht, aber ein Termin kann nicht um 10:30 starten oder enden. 
 - Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden, da wir keine entsprechenden Begrenzungen miteingebunden haben. Zu beachten ist, das Termine nur zur vollen Stunde angelet werden können.   
 - Ganztagestermine werden so behandelt, dass die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt ist. Wenn die nächsten Termine also am nächsten Tag sind und einmal ein Ganztagestermin und ein Termin um 10:00 stattfinden, wird der Ganztagestermin als nächster ausgegeben.
 - Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan angelegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
