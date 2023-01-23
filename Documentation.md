@@ -227,5 +227,3 @@ def convert_word_time_to_number_date(given_time):
 ```
 
 
-
-## Eingesetzte Google Coding Styles
