@@ -18,12 +18,12 @@ Als alle Befehle fehlerfrei funktionierten, haben wir den Code überarbeitet, so
 
 ## Mycroft Skill anlegen
 
-Zuerst muss der Befehl ```pip install msk``` und danach ```msk create``` ins Terminal von dem Rasberry PI eingegeben werden, um einen neuen Skill zu erstellen. Falls man GitHub als Version Control System nutzen möchte, muss dann der eigene GitHub Benutzername eingegeben werden. Zudem muss der gewünschte Name für den Skill gewählt werden. Die Erstellung eines Skills kann man nochmal genauer unter diesem Link finden https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mycroft-skills-kit. <br>
+Zuerst muss der Befehl ```pip install msk``` und danach ```msk create``` ins Terminal von dem Raspberry PI eingegeben werden, um einen neuen Skill zu erstellen. Falls man GitHub als Version Control System nutzen möchte, muss dann der eigene GitHub Benutzername eingegeben werden. Zudem muss der gewünschte Name für den Skill gewählt werden. Die Erstellung eines Skills kann man nochmal genauer unter diesem Link finden https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mycroft-skills-kit. <br>
 Optional können bereits beispielhafte Befehle eingegeben werden, auf welche Mycroft reagieren soll. Ebenso kann ein personalisiertes Icon für den Skill erstellt werden.<br>
 Wenn das gemacht ist, müssen die Kategorien ausgewählt werden, in die der Skill fällt. Zudem muss eine Lizenz gewählt werden, um fortfahren zu können.<br>
 Daraufhin kann man automatisch ein GitHub Repository anlegen lassen. Hierfür muss man in dem erstellten Repository einen Access Token generieren lassen. Dieser muss in der Kommandozeile eingegeben werden.(repo token)
 ### GitHub und Skill erstellt
-Um eine SSH Verbindung herzustellen wird die IP-Adresse des Rasberry Pi benötigt. Diese lässt sich herausfinden über den Befehl `ifconfig` herausfinden. Man kann nun in die Kommandozeile oder in Visual Studio Code `pi@ip-adresse` eingeben und die Verbindung zum Rasberry Pi wird nach der Eingabe des korrekten Passworts aufgebaut. 
+Um eine SSH Verbindung herzustellen wird die IP-Adresse des Raspberry Pi benötigt. Diese lässt sich herausfinden über den Befehl `ifconfig` herausfinden. Man kann nun in die Kommandozeile oder in Visual Studio Code `pi@ip-adresse` eingeben und die Verbindung zum Raspberry Pi wird nach der Eingabe des korrekten Passworts aufgebaut. 
 
 ## Erläuterung des Konzepts der Implementierung des Kalenderskills 
 
