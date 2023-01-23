@@ -33,7 +33,6 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 {day} of {month} in {year}: first of March in two thousand twenty three
 
 **How to enter a time**
-{time}: teen thirty
 {time} o'clock: teen
 
 **Nächster Termin:**
