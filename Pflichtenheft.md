@@ -92,6 +92,8 @@ Der Nutzer kann somit zum einen über die Webseite von NextCloud seine Termine s
 Zudem ist die Erstellung eines Termins nur für die Zeitzone gedacht, in der sich der Nutzer aktuell befindet. Falls ein Nutzer einen Termin erstellen möchte, der nicht in seiner Zeitzone stattfindet, wird die Zeit nach der aktuellen Zeitzone angegeben.
 Weiterhin soll die Möglichkeit bestehen Termine nicht nur zur vollen Stunde anzulegen. Uhrzeiten wie 10:30 sollen bei der Terminerstellung ebenfalls möglich sein. 
 
+Die Google Coding Guidlines wurden mit Pylint kontrolliert und angewendet. Der Code wird momentan von pylint mit einem Score __/10 bewertet.
+
 
 ## Zeit- und Personalplanung
 
