@@ -4,7 +4,7 @@ Gruppe: SI-WS2022_Buck_Rinck_Mahmoudi_Lapp
 
 ## Einleitung
 Im Auftrag des Kunden Prof. Dr. Christian Becker-Asano werden diverse Aufgaben mittels dem Sprachassistenten MyCroft umgesetzt. 
-MyCroft ist eine open source Software, die als virtueller Assistent agiert und durch Spracheingaben gesteuert wird.
+MyCroft ist eine Open Source Software, die als virtueller Assistent agiert und durch Spracheingaben gesteuert wird.
 Als Hardware wird ein Raspberry-Pi verwendet, welcher für die Sprachausgabe an einen Lautsprecher angeschlossen ist.
 Zudem ist er mit einer Webcam verbunden, welche als Mikrofon dient.
 Unter den Aufgabenbereich fällt die Implementierung eines Kalender-Skills. 
@@ -21,7 +21,7 @@ Das Projekt wird im Rahmen Speech Interaction bei Prof. Dr. Christian Becker-Asa
 ## Funktionale Anforderungen
 
 - MyCroft soll auf Nachfrage den nächsten Termin ausgeben.
-- MyCroft soll auf Nachfrage alle Termine am nachgefragten Tag ausgeben.
+- MyCroft soll auf Nachfrage alle Termine am gewünschten Tag ausgeben.
 - Durch ein Sprachkommando soll ein neuer Termin angelegt, sowie umbenannt werden können.
 - Ein bestehender Termin soll nach einer Sicherheitsbestätigung durch Sprachaufforderung gelöscht werden können.
 - Bei fehlerhaften Anfragen soll dem Nutzer ein entsprechendes Feedback gegeben werden. 
@@ -67,11 +67,11 @@ User versucht nicht bestehenden Termin zu löschen:
 - M: I can't delete the appointment {name} on the {day} {month} of {year}
 
 Anmerkungen zu den Anfragen:
-- Das Jahr muss beim Termin abfragen, angeben oder erstellen immer mitgeteilt werden.
-- Beim erstellen eines Termines kann nur die Stunde angegeben und nicht dazu noch eine Minuten Anzahl. Also zusagen, dass ein Termin um 10 Uhr starten oder enden soll geht, aber ein Termin kann nicht um 10:30 starten oder enden. 
-- Termine aus der Vergangenheit können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt werden oder umbenannt werden, da wir keine entsprechenden Begrenzungen miteingebunden haben. Zu beachten ist, das Termine nur zur vollen Stunde angelet werden können.   
-- Ganztagestermine werden so behandelt, dass die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt ist. Wenn die nächsten Termine also am nächsten Tag sind und einmal ein Ganztagestermin und ein Termin um 10:00 stattfinden, wird der Ganztagestermin als nächster ausgegeben.
-- Mit tzlocal.get_localzone() fragt das Programm automatisch die Lokale Zeitzone ab und passt den Kalender an die Lokale Zeitzone an. Wenn man nun einen Termin in Japan angelegt nach japanischer Zeit aber zum Zeitpunkt des Termins sich in Deutschland befindet, wird dieser Termin bei Abfrage automatisch zur entsprechenden deutschen Uhrzeit ausgegeben.
+- Das Jahr muss beim Abfragen, Angeben oder Erstellen eines Termins, immer mitgeteilt werden.
+- Beim Erstellen eines Termines kann nur die Stunde angegeben werden. Eine zusätzliche Minutenangabe ist nicht möglich.
+- Termine, die in der Vergangenheit liegen, können gelöscht werden. Es können Termine an jedem beliebigen Datum angelegt oder umbenannt werden, da keine entsprechenden Begrenzungen implementiert wurden.  
+- Für Ganztagestermine wird die Uhrzeit des Termins auf 0:00 bis 24:00 festgelegt. Wird nach dem nächsten Termin gefragt, und an dem Tag befinden sich ein normaler und ein Ganztagestermin, wird daher der Ganztagestermin ausgegeben.
+- Mit tzlocal.get_localzone() fragt das Programm automatisch die lokale Zeitzone ab. Wenn ein Termin angelegt wird, wird er anhand der aktuellen Zeitzone angelegt.
 
 
 
@@ -90,9 +90,9 @@ Anmerkungen zu den Anfragen:
 Aus Sicherheitsgründen sollte der Besitzer des Kalenders nur mit seiner eigenen Stimme Veränderungen im Kalender vornehmen dürfen und Termine abfragen dürfen. Dadurch soll vermieden werden, dass fremde Person durch rein sprachliche Kommandos Zugriff auf den Kalender haben. 
 Der Nutzer kann somit zum einen über die Webseite von NextCloud seine Termine steuern, aber auch über die Stimme, welche vorher authentifiziert werden muss. 
 Zudem ist die Erstellung eines Termins nur für die Zeitzone gedacht, in der sich der Nutzer aktuell befindet. Falls ein Nutzer einen Termin erstellen möchte, der nicht in seiner Zeitzone stattfindet, wird die Zeit nach der aktuellen Zeitzone angegeben.
-Weiterhin soll die Möglichkeit bestehen Termine nicht nur zur vollen Stunde anzulegen. Uhrzeiten wie 10:30 sollen bei der Terminerstellung ebenfalls möglich sein. 
+Weiterhin soll die Möglichkeit bestehen, Termine nicht nur zur vollen Stunde anzulegen. Uhrzeiten wie 10:30 sollen bei der Terminerstellung ebenfalls möglich sein.
 
-Die Google Coding Guidlines wurden mit Pylint kontrolliert und angewendet. Der Code wird momentan von pylint mit einem Score __/10 bewertet.
+Die Google Coding Guidlines wurden mit Pylint kontrolliert und angewendet. Der Code wird momentan von Pylint mit einem Score 9,18/10 bewertet.
 
 
 ## Zeit- und Personalplanung
@@ -117,6 +117,7 @@ Januar:
   - Einen neuen Termin per Sprachkommando anlegen.
   - Einen bestehenden Termin per Sprachkommando umbenennen.
   - Einen bestehenden Termin per Sprachkommando nach Sicherheitsbestätigung durch den Nutzer löschen.
+  - Google Coding Styles umsetzen
 
 Abgabe 24.01.23
 
@@ -125,8 +126,10 @@ Abgabe 24.01.23
  
 Zu Beginn haben wir alle zusammen gearbeitet, damit jeder wusste wie man den Raspberry-Pi benutzt. Jeder hat einen eigenen Skill implemetiert. Zum Schluss haben wir gemeinsam die Google Coding Styles umgesetzt.
 
-Rollenverteilung: 
-- Anna: Create new appointment skill
-- Alex: Next appointment skill & appointment on a specific date skill
-- Azita: Delete appointment skill
-- Julia: Rename appointment skill
+Rollenverteilung:
+
+Pflichtenheft, Dokumentation: Alle
+- Anna: "Create new appointment" & "delete appointment"
+- Alex: "Next appointment" & "appointment on a specific date", Sprachausgabe von Nummer (1) zu Wort(first), Umsetzung Google Coding Styles
+- Azita: "Delete appointment", beispielhafte Termine erstellt
+- Julia: Implementierung Verbindungsaufbau zu NextCloud Kalender, "rename appointment", Spracheingabe von Wort(first) zu Nummer (1)
